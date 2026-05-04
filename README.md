@@ -73,5 +73,6 @@ El índice SPI actual no refleja adecuadamente el impacto productivo:
 
 ```bash
 ETL/               # Procesos de limpieza e integración, y dataset final
+EDA/               # Procesos de análisis exploratorio de los datos
 Modelos/           # Modelos entrenados (.pkl)
 SPI/               # Construcción y calibración del índice
