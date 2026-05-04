@@ -72,6 +72,6 @@ El índice SPI actual no refleja adecuadamente el impacto productivo:
 ##  Estructura del repositorio
 
 ```bash
-ETL/               # Procesos de limpieza e integración, Datos integrados y dataset final
+ETL/               # Procesos de limpieza e integración, y dataset final
 Modelos/           # Modelos entrenados (.pkl)
 SPI/               # Construcción y calibración del índice
