@@ -1,48 +1,55 @@
 # SPI - Índice Paramétrico de Activación
 
-Esta carpeta contiene la construcción, análisis y calibración del **Índice de Precipitación Estandarizado (SPI)** utilizado como mecanismo de activación del seguro cafetero paramétrico.
+Esta carpeta contiene la construcción, evaluación e integración del **Índice de Precipitación Estandarizado (SPI)** dentro del diseño del seguro cafetero paramétrico.
 
 ---
 
 ##  Objetivo
 
-Evaluar la capacidad del índice SPI para reflejar condiciones agroclimáticas que afectan la producción cafetera en Caldas, y proponer mejoras en su diseño para reducir el *basis risk*.
+Analizar el desempeño del SPI como trigger del seguro y desarrollar un esquema mejorado que reduzca el *basis risk* mediante su integración con modelos predictivos de producción.
 
 ---
 
 ##  Contenido
 
 - `06_indice_spi.ipynb`  
-  Notebook principal donde se desarrolla:
-  - Cálculo del SPI en diferentes ventanas temporales  
+  - Cálculo del SPI en diferentes escalas  
   - Análisis del comportamiento del índice  
-  - Comparación con la producción cafetera  
-  - Evaluación de discrepancias  
-  - Propuesta de calibración del índice  
+  - Identificación de eventos extremos  
+  - Evaluación de su relación con la producción  
+
+- `07_integracion_spi_modelo.ipynb`  
+  - Integración del SPI con la producción esperada (modelo predictivo)  
+  - Análisis de discrepancias entre activación y pérdidas reales  
+  - Evaluación del desempeño del esquema híbrido  
+  - Propuesta de mejora del trigger del seguro  
 
 ---
 
 ##  Metodología
 
-El análisis del SPI incluye:
+El enfoque se desarrolla en dos etapas:
 
-1. Cálculo del índice en distintas escalas temporales (ej: SPI-6, SPI-9)  
-2. Identificación de eventos extremos (sequía/exceso de lluvia)  
-3. Comparación con la producción observada  
-4. Evaluación del desalineamiento entre índice y pérdidas reales  
-5. Ajuste de ventanas para mejorar la activación del seguro  
+### 1. Evaluación del SPI
+- Cálculo en múltiples ventanas (SPI-6, SPI-9)  
+- Identificación de eventos climáticos  
+- Comparación con producción real  
+
+### 2. Integración con modelo
+- Uso de producción esperada (Random Forest)  
+- Análisis de desviaciones respecto a niveles normales  
+- Evaluación de activación vs pérdidas  
 
 ---
+
 ##  Hallazgos clave
 
-- El SPI presenta limitaciones para capturar el impacto real sobre la producción  
-- Existen casos de:
-  - Activación sin pérdida productiva  
-  - Pérdidas sin activación del índice  
+- El SPI por sí solo presenta limitaciones para reflejar el impacto productivo  
+- Se identifican casos de:
+  - Activación sin pérdida  
+  - Pérdida sin activación  
 
-- El problema es estructural y se relaciona con:
-  - Falta de incorporación de rezagos  
-  - Ausencia de variables de vegetación  
+- La integración con el modelo mejora la capacidad de detección de eventos relevantes  
 
 ---
 
@@ -50,27 +57,26 @@ El análisis del SPI incluye:
 
 Se plantea un esquema híbrido:
 
-- **SPI-9:** define la activación del evento (persistencia climática)  
+- **SPI-9:** define la activación del evento  
 - **SPI-6:** determina la intensidad del pago  
-
-Este enfoque mejora la correspondencia entre clima y producción.
+- **Modelo predictivo:** valida impacto productivo  
 
 ---
 
-##  Relación con el proyecto
+##  Rol dentro del proyecto
 
-Esta carpeta corresponde a la **capa de activación** del sistema:
+Esta carpeta corresponde a la **capa de activación**:
 
-- Recibe insumos del ETL y modelos  
-- Se integra con la producción esperada  
-- Define cuándo el seguro debe activarse  
+- Recibe insumos del ETL  
+- Utiliza resultados de modelos  
+- Define el trigger del seguro  
 
 ---
 
 ##  Buenas prácticas
 
-- Ejecutar el notebook completo para reproducibilidad  
-- Validar consistencia temporal del índice  
+- Ejecutar notebooks completos  
+- Validar consistencia temporal  
 - Interpretar resultados junto con producción y NDVI  
 
 ---
